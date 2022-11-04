@@ -1,9 +1,7 @@
 package com.zipcodewilmington;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.sql.Array;
+import java.util.*;
 
 /**
  * Created by leon on 1/29/18.
@@ -42,7 +40,9 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return true;
+        List<String> stringArrayList = new ArrayList<String>(Arrays.asList(array));
+        return stringArrayList.contains(value);
+        //return true;
     }
 
     /**
@@ -62,6 +62,31 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
+        //List<String>rev = Arrays.asList(array);
+        //Collections.reverse(rev);
+
+        //String rev = (reverse(array)).toString();
+        //rev.equals(array.toString());
+
+        //String[] rev = reverse(array);
+       // Arrays.equals(array, rev);
+        int check = 0;
+        int see = 0;
+
+        for(int i = array.length-1; i >= 0; i--) {
+            if ((reverse(array)[i] != array[array.length - 1 - i])) {
+                check += 1;
+                System.out.println("checked" + i);
+            } else {
+                see += 1;
+                System.out.println("seen" + i);
+            }
+
+        }  return (check < see);
+
+
+
+
         /**
         // *
         // * so, it's always true? Hashcode is the same, even reversed the identity is equal.
@@ -80,7 +105,7 @@ public class StringArrayUtils {
 
         // * passes all tests but doesn't check all the way. 
        //  **/
-        return false;
+       // return false;
     }
 
     /**
@@ -97,6 +122,18 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
+
+      /**  int count = 0;
+        List<String> arrayList = new ArrayList(Arrays.asList(array));
+
+        for(int i = 0; i <= array.length; i++){
+
+            if (value == (arrayList.get(i))) {
+                System.out.println(i);
+                count += 1;
+            }
+            return count;
+        } */
         return 0;
     }
 

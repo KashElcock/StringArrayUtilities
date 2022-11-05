@@ -27,12 +27,17 @@ public class StringArrayUtils {
      * @param array array of String objects
      * @return last element in specified array
      */ // TODO
-    public static String getLastElement(String[] array) {return array[array.length-1];}
+    public static String getLastElement(String[] array) {
+        return array[array.length - 1];
+    }
+
     /**
      * @param array array of String objects
      * @return second to last element in specified array
      */ // TODO
-    public static String getSecondToLastElement(String[] array) {return array[array.length-2];}
+    public static String getSecondToLastElement(String[] array) {
+        return array[array.length - 2];
+    }
 
     /**
      * @param array array of String objects
@@ -51,17 +56,43 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] reverse(String[] array) {
         //Converting array into listToReverse using Arrays.asList
-        List<String>listToReverse = Arrays.asList(array);
+        List<String> listToReverse = Arrays.asList(array);
         //Using Collections Class's reverse method to reverse the list.
         Collections.reverse(listToReverse);
         //Converting back into array using toArray()
-        return  listToReverse.toArray(array);
+        return listToReverse.toArray(array);
     }
+
     /**
      * @param array array of String objects
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
+        /**
+         *
+         * // this works great too.
+         *
+         * if(Arrays.equals(array,reverse(array))){
+         * return true;
+         * }
+         * return false;
+         *
+         * }
+         *
+         *
+         *
+         *
+         *
+         * String[] rev = reverse(array);
+
+         for (int i = 0; i < array.length; i++) {
+         if (!array[i].equals(rev[rev.length-i-1]))
+         {
+         return false;
+         }
+         } return true; */
+
+
         //List<String>rev = Arrays.asList(array);
         //Collections.reverse(rev);
 
@@ -69,11 +100,11 @@ public class StringArrayUtils {
         //rev.equals(array.toString());
 
         //String[] rev = reverse(array);
-       // Arrays.equals(array, rev);
+        // Arrays.equals(array, rev);
         int check = 0;
         int see = 0;
 
-        for(int i = array.length-1; i >= 0; i--) {
+        for (int i = array.length - 1; i >= 0; i--) {
             if ((reverse(array)[i] != array[array.length - 1 - i])) {
                 check += 1;
                 System.out.println("checked" + i);
@@ -82,30 +113,29 @@ public class StringArrayUtils {
                 System.out.println("seen" + i);
             }
 
-        }  return (check < see);
-
-
+        }
+        return (check < see);
 
 
         /**
-        // *
-        // * so, it's always true? Hashcode is the same, even reversed the identity is equal.
-       //  if (array.equals(StringArrayUtils.reverse(array))){}
+         // *
+         // * so, it's always true? Hashcode is the same, even reversed the identity is equal.
+         //  if (array.equals(StringArrayUtils.reverse(array))){}
 
-       // Let's compare the contents.
-        // * passes all tests but doesn't check all the way.
-        int i = 0;
-        String [] reversed = StringArrayUtils.reverse(array);
+         // Let's compare the contents.
+         // * passes all tests but doesn't check all the way.
+         int i = 0;
+         String [] reversed = StringArrayUtils.reverse(array);
 
-        while (array[i] != reversed[reversed.length-1-i]){
-            i = i++;
-            System.out.println("Checked " + i + " & " + (reversed.length-1-i));
-            return false;
-        } return true;
+         while (array[i] != reversed[reversed.length-1-i]){
+         i = i++;
+         System.out.println("Checked " + i + " & " + (reversed.length-1-i));
+         return false;
+         } return true;
 
-        // * passes all tests but doesn't check all the way. 
-       //  **/
-       // return false;
+         // * passes all tests but doesn't check all the way.
+         //  **/
+        // return false;
     }
 
     /**
@@ -113,7 +143,15 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        String abc = "abcdefghijklmnopqrstuvwxyz";
+        for(int i = 0; i < abc.length(); i++){
+            char a = abc.charAt(i);
+            if (contains(array, String.valueOf(a))) {
+                System.out.println("a");
+                return false;
+            }
+            System.out.println("test" + i);
+        } return true;
     }
 
     /**

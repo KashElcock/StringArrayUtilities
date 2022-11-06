@@ -160,19 +160,13 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-
-      /**  int count = 0;
-        List<String> arrayList = new ArrayList(Arrays.asList(array));
-
-        for(int i = 0; i <= array.length; i++){
-
-            if (value == (arrayList.get(i))) {
-                System.out.println(i);
-                count += 1;
+        int nOO = 0;
+        for(int i = 0; i < array.length; i++){
+            if(array[i] == value){
+                nOO++;
             }
-            return count;
-        } */
-        return 0;
+        }
+        return nOO;
     }
 
     /**
@@ -181,7 +175,10 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        List<String> retained = new ArrayList<String>(Arrays.asList(array));
+        retained.remove(valueToRemove);
+        String[] newString = retained.toArray(new String[0]);
+        return newString;
     }
 
     /**
@@ -189,7 +186,28 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+
+        List<String> retained = new ArrayList<String>();
+        retained.add(array[0]);
+        for(int i = 1; i < array.length; i++){
+            if((array[i] != array[i - 1])) {
+                retained.add(array[i]);
+                System.out.println(retained);
+            }
+        }
+        /**
+         * //removes all duplicates
+         * String[] newString = retained.toArray(new String[0]);
+        return newString;
+        List<String> retained = new ArrayList<String>();
+        for(int i = 0; i < array.length; i++){
+            if(!retained.contains(array[i])){
+                retained.add(array[i]);
+                System.out.println(retained);
+            }
+        }*/
+        String[] newString = retained.toArray(new String[0]);
+        return newString;
     }
 
     /**
